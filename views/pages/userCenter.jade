@@ -1,0 +1,43 @@
+extends ../layout
+block content
+	.container
+		.row
+			.col-md-12
+				form.form-horizontal(method="post",action="/admin/user/info",enctype="multipart/form-data")
+					input(type="hidden",name="user[_id]",value="#{user._id}")
+					.form-group
+						label.col-sm-2.control-label(for="inputUserName") 用户名
+						.col-sm-10
+							input#inputUserName.form-control(type="text",name="user[name]",value=user.name,disabled="disabled")
+					.form-group
+						label.col-sm-2.control-label(for="inputSex") 性别
+						.col-sm-10
+							label.radio-inline
+								input(type="radio", name="user[sex]",value="男",checked=user.sex=="男") 
+								span 男
+							label.radio-inline
+								input(type="radio", name="user[sex]",value="女",checked=user.sex=="女") 
+								span 女
+					.form-group
+						label.col-sm-2.control-label(for="inputEmail") 邮箱
+						.col-sm-10
+							input#inputEmail.form-control(type="text",name="user[email]",value=user.email)
+					.form-group
+						label.col-sm-2.control-label(for="inputTel") 手机
+						.col-sm-10
+							input#inputTel.form-control(type="text",name="user[tel]",value=user.tel)
+					.form-group
+						label.col-sm-2.control-label(for="inputHeadPic") 头像
+						.col-sm-10
+							if !user.img
+								img(src="/images/headpic.png",style="width:80px;height:80px;")
+							else
+								img(src="/uploads/#{user.img}",style="width:80px;height:80px;")
+					.form-group
+						label.col-sm-2.control-label(for="uploadPic") 
+						.col-sm-10
+							button.btn.btn-default(style="position:relative") 头像上传
+								input#uploadPic(type="file",name="uploadPic",style="position: absolute;left: 0;top: 0;z-index: 1;width: 100%;opacity: 0;cursor: pointer;height:100%")
+					.form-group
+						.col-sm-offset-2.col-sm-10
+							button.btn.btn-primary(type="submit") 录入

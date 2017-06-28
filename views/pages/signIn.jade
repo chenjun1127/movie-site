@@ -1,0 +1,25 @@
+doctype
+html
+    head
+        meta(charset="utf-8")
+        meta(content="IE=edge",http-equiv="X-UA-Compatible")
+        meta(name="viewport",content="width=device-width, initial-scale=1")
+        title #{title}
+        include ../includes/head.jade
+body
+    .container(style="background:#fff;")
+        form(method="POST",action="/user/signIn")
+            .row(style="padding-top:15px;font-size:18px;")
+                .col-md-6 登录
+                if !admin
+                    .col-md-6.text-right(style="color:#d9534f;") 当前账户没有登录或无权限访问，请重试！
+            hr(style="margin:15px 0;border-color:#d9d9d9")
+            .form-group
+                label(for="signinName") ID：
+                input.form-control(type="text", id="signinName" ,placeholder="ID",name="user[name]")
+            .form-group
+                label(for="signPassword") Password：
+                input.form-control(type="password", id="signPassword" ,placeholder="Password",name="user[password]")
+            .form-group.text-center
+                button.btn.btn-default(type="button",data-dismiss="modal") close
+                button.btn.btn-success(type="submit",style="margin-left:10px;") submit

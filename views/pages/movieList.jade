@@ -1,0 +1,35 @@
+extends ../layout
+block content
+	.container
+		.row
+			.col-md-12
+				table.table.table-hover.table-bordered
+					thead
+						tr
+							th(style="text-align:center;width:60px;") 序号
+							th 电影名字
+							th 导演
+							th(style="text-align:center;") 国家
+							th(style="text-align:center;") 上映年份
+							th(style="text-align:center;") 录入时间
+							th(style="text-align:center;") 所属分类
+							th(style="text-align:center;") 统计pv
+							th(style="text-align:center;") 查看
+							th(style="text-align:center;") 更新 
+							th(style="text-align:center;") 删除
+					tbody
+						each item,index in movies
+							tr(class="item-id-#{item._id}")
+								td(style="vertical-align: middle;text-align:center;") #{index+1}
+								td(style="vertical-align: middle;") #{item.title}
+								td(style="vertical-align: middle;") #{item.doctor}
+								td(style="vertical-align: middle;text-align:center;") #{item.country}
+								td(style="vertical-align: middle;text-align:center;") #{item.year}
+								td(style="vertical-align: middle;text-align:center;") #{moment(item.meta.createAt).format("MM/DD/YYYY")}
+								td(style="vertical-align: middle;text-align:center;") #{item.category.name}
+								td(style="vertical-align: middle;text-align:center;") #{item.pv}
+								td(style="vertical-align: middle;text-align:center;"): a(target="_blank",href="/movie/#{item._id}") 查看
+								td(style="vertical-align: middle;text-align:center;"): a(target="_blank",href="/admin/movie/update/#{item._id}") 修改
+								td(style="vertical-align: middle;text-align:center;") 
+									button.btn.btn-danger.del(type="button",data-id="#{item._id}",onclick="del(this,'/admin/movie/list')") 删除
+	script(src="/js/admin.js")

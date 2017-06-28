@@ -1,0 +1,28 @@
+extends ../layout
+block content
+    .container
+        .status(style="margin:140px auto;width:520px;border:1px solid #d9d9dd;border-radius:5px;text-align:center;padding:60px 0;")
+            if code == 1
+                img(src="/images/success.png", width="100")
+            else
+                img(src="/images/fail.png", width="100")
+            h3(style="padding:10px 0") #{tips}
+            a#button.btn.btn-success.btn-lg(href="javascript:;",data-href="#{href}") 
+                span#number 3 
+                span 秒后返回..
+    script.
+        var s  = 3;
+        function num(){
+            $("#number").html(s);
+            s --;
+            if(s<=0){
+                window.location.href=$("#button").data("href");
+            }
+        }
+        function SetNum(){
+            setInterval("num()",1000);
+        }
+        window.onload=function(){
+            SetNum();
+        }
+         

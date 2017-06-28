@@ -1,0 +1,30 @@
+{
+  "name": "movie-site",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "author": "chenjun",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.17.2",
+    "connect-mongo": "^1.3.2",
+    "express": "^4.15.3",
+    "express-session": "^1.15.3",
+    "jade": "^1.11.0",
+    "moment": "^2.18.1",
+    "mongoose": "^4.10.2",
+    "connect-multiparty": "^2.0.0"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.18.12",
+    "gulp": "^3.9.1",
+    "gulp-jshint": "^2.0.4",
+    "gulp-nodemon": "^2.2.1",
+    "jshint": "^2.9.5"
+  }
+}

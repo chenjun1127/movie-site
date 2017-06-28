@@ -1,0 +1,59 @@
+extends ../layout
+block content
+	.container
+		.row
+			.col-md-12
+				table.table.table-hover.table-bordered
+					thead
+						tr
+							th(style="text-align:center;width:60px;") 序号
+							th 电影类别
+							th(style="text-align:center;") 合计（部）
+							th(style="text-align:center;") 录入时间 
+							th(style="text-align:center;") 查看
+							th(style="text-align:center;") 更新 
+							th(style="text-align:center;") 删除
+					tbody
+						each item,index in categories
+							tr(class="item-id-#{item._id}")
+								td(style="vertical-align: middle;text-align:center;") #{index+1}
+								td(style="vertical-align: middle;") #{item.name}
+								td(style="vertical-align: middle;text-align:center;") #{item.movies.length}
+								td(style="vertical-align: middle;text-align:center;") #{moment(item.meta.createAt).format("MM/DD/YYYY")}
+								td(style="vertical-align: middle;text-align:center;"): a(target="_blank",href="/movie/category/result?cat=#{item._id}&pageSize=1") 查看
+								td(style="vertical-align: middle;text-align:center;"): a(target="_blank",href="../category/update/#{item._id}") 修改
+								td(style="vertical-align: middle;text-align:center;") 
+									button.btn.btn-danger.del(type="button",data-id="#{item._id}",data-toggle="modal") 删除
+	#del-modal.modal.fade
+		.modal-dialog
+			.modal-container(style="background:#fff;border-radius: 6px;-webkit-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);")
+				.modal-header
+					h4.modal-title 提示
+				.modal-body
+					h4(style="color:#c9302c") 确定删除该分类吗？删除后该分类下数据也被删除!
+				.modal-footer
+					button.btn.btn-default(type="button",data-dismiss="modal") 取消
+					button.btn.btn-success(type="button") 确定	
+	script.
+		var categoryId = null;
+		var tr = null;
+		$(".del").click(function(){
+			$("#del-modal").modal();  
+			categoryId = $(this).data("id");
+			tr = $(this).parents("tr");
+		})							
+		$(".btn-success").click(function(){			
+			if(categoryId){
+				$.ajax({
+					type: 'DELETE',
+					url: '/admin/category/del' + "?id=" + categoryId,
+				}).done(function(res) {
+					if (res.success == 1) {
+						if (tr.length > 0) {
+							tr.remove();
+						}
+					}
+				})
+			}
+			$("#del-modal").modal('hide');
+		})	

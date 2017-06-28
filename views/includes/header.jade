@@ -1,0 +1,64 @@
+.container
+	.row
+		.col-md-6
+			h3(style="margin-top:15px;") #{title}
+		.col-md-6
+			if user
+				h5.text-right(style="margin-top: 10px")
+					span 欢迎您，
+					a(href="/user/center?userId=#{user._id}",style="color:#337ab7;font-style:normal;margin-right:10px;") &nbsp;#{user.name}
+					span.dropdown(style="display: inline-block;")
+						button.btn.btn-primary.dropdown-toggle(id="dLable",type="button",data-toggle="dropdown",aria-haspopup="true",aria-expanded="false") 后台管理
+							span.caret
+						ul(class="dropdown-menu",aria-labelledby="dLable")
+							li
+								a(href="/admin/movie/list") 电影列表
+							li
+								a(href="/admin/movie/add") 电影录入
+							li
+								a(href="/admin/category/list") 电影分类
+							li
+								a(href="/admin/category/new") 新增分类
+							li
+								a(href="/admin/user/list") 用户列表
+							li
+								a(href="/") 返回首页
+					a.btn.btn-danger(href="/loginout",style="margin-left:10px;") 注销
+			else
+				h5.text-right(style="margin-top: 10px")
+				a(href="/",class="btn btn-primary pull-right",style="margin:0 0 10px 10px",data-toggle="modal",data-target="#signin-modal") 登录
+				a(href="/",class="btn btn-success pull-right",data-toggle="modal",data-target="#signup-modal") 注册
+	hr(style="margin:10px 0;margin-top:0;border-color:#d9d9d9")
+#signin-modal.modal.fade
+	.modal-dialog
+		.modal-container(style="background:#fff;border-radius: 6px;-webkit-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);")
+			form(method="POST",action="/user/signIn")
+				.modal-header
+					h4.modal-title 登录
+				.modal-body
+					.form-group
+						label(for="signinName") ID：
+						input.form-control(type="text", id="signinName" ,placeholder="ID",name="user[name]")
+					.form-group
+						label(for="signPassword") Password：
+						input.form-control(type="password", id="signPassword" ,placeholder="Password",name="user[password]")
+				.modal-footer
+					button.btn.btn-default(type="button",data-dismiss="modal") close
+					button.btn.btn-success(type="submit") submit
+
+#signup-modal.modal.fade
+	.modal-dialog
+		.modal-container(style="background:#fff;border-radius: 6px;-webkit-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);")
+			form(method="POST",action="/user/signUp")
+				.modal-header
+					h4.modal-title 注册
+				.modal-body
+					.form-group
+						label(for="signupName") ID：
+						input.form-control(type="text", id="signupName" ,placeholder="ID",name="user[name]")
+					.form-group
+						label(for="signupPassword") Password：
+						input.form-control(type="password", id="signupPassword" ,placeholder="Password",name="user[password]")
+				.modal-footer
+					button.btn.btn-default(type="button",data-dismiss="modal") close
+					button.btn.btn-success(type="submit") submit

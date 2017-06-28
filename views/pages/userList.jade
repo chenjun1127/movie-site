@@ -1,0 +1,27 @@
+extends ../layout
+block content
+	.container
+		.row
+			.col-md-12
+				table.table.table-hover.table-bordered
+					thead
+						tr
+							th(style="text-align:center;width:60px;") 序号
+							th 用户名
+							th 邮箱
+							th 手机号
+							th 头像
+							th 注册时间
+							th(style="text-align:center;width:120px;") 操作
+					tbody
+						each item,index in users
+							tr(class="item-id-#{item._id}")
+								td(style="vertical-align: middle;text-align:center;") #{index+1}
+								td(style="vertical-align: middle;") #{item.name}
+								td(style="vertical-align: middle;") #{item.email}
+								td(style="vertical-align: middle;") #{item.tel}
+								td(style="vertical-align: middle;") #{item.img}
+								td(style="vertical-align: middle;") #{moment(item.meta.createAt).format("MM/DD/YYYY")}
+								td(style="vertical-align: middle;text-align:center")
+									button.btn.btn-danger.del-user(type="button",data-id="#{item._id}",style="margin:0 5px;",onclick="del(this,'/admin/user/list')") 删除
+	script(src="/js/admin.js")
