@@ -21,7 +21,7 @@
 * 对电影数据作分页处理，分页查询数据库数据；
 * 管理员可以对网站数据进行增加删除修改（需要管理员权限）；
 * 管理员可从后台查看所有的电影、用户、评论、访问量等数据；
-### 二、网站整体效果，截图看这里
+### 二、网站整体效果，截图看[这里](https://github.com/chenjun1127/Movie-Site/blob/master/images.md)
 ### 三、运行环境及Node版本:
 作为windows平台的忠实粉丝（≥▽≤/），当前平台下node v6.9.2 ，运行正常！
 ### 四、安装
@@ -48,18 +48,22 @@ gulp
 * 首页：http://localhost:3000/
 * 详情页：http://localhost:3000/movie/:id
 * 当前电影分页类别页：http://localhost:3000/movie/category/result?cat=id&pageSize=1
+
 用户关联：
+
 * 用户注册：http://localhost:3000/signUp
 * 用户登录：http://localhost:3000/signIn
 * 用户个人中心：http://localhost:3000/user/center?userId=id
+
 后台管理：
-* 当前电影列表：http://localhost:3000/admin/movie/list
-* 电影录入：http://localhost:3000/admin/movie/add
-* 电影数据修改：http://localhost:3000/admin/movie/update/:id
-* 电影分类列表：http://localhost:3000/admin/category/list
-* 电影分类修改：http://localhost:3000/admin/category/update/:id
-* 电影分类新增：http://localhost:3000/admin/category/new
-* 用户列表：http://localhost:3000/admin/user/list
+
+* 当前电影列表:http://localhost:3000/admin/movie/list
+* 电影录入:http://localhost:3000/admin/movie/add
+* 电影数据修改:http://localhost:3000/admin/movie/update/:id
+* 电影分类列表:http://localhost:3000/admin/category/list
+* 电影分类修改:http://localhost:3000/admin/category/update/:id
+* 电影分类新增:http://localhost:3000/admin/category/new
+* 用户列表:http://localhost:3000/admin/user/list
 ### 七、项目结构
 ```bash
 ├── app.js              项目入口文件
