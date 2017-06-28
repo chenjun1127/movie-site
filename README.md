@@ -45,25 +45,25 @@ gulp
 ### 六、项目页面
 当使用管理员账号（chenjun,123456）登录时，在网站右上角会出现下拉菜单，通过点击菜单可以进入各个页面，如果自己注册的账号，默认为普通用户（role为0），普通用户有权限限制，是无法进入到电影的列表、录入、分类、用户等管理页面的！当然，可自行修改数据库里的当前账号的role值，当role大于10的时候，就有管理员权限了！基本的界面路由如下：
 基本页面：
-* 首页：http://localhost:3000/
-* 详情页：http://localhost:3000/movie/:id
-* 当前电影分页类别页：http://localhost:3000/movie/category/result?cat=id&pageSize=1
+* 首页：localhost:3000/
+* 详情页：localhost:3000/movie/:id
+* 当前电影分页类别页：localhost:3000/movie/category/result?cat=id&pageSize=1
 
 用户关联：
 
-* 用户注册：http://localhost:3000/signUp
-* 用户登录：http://localhost:3000/signIn
-* 用户个人中心：http://localhost:3000/user/center?userId=id
+* 用户注册：localhost:3000/signUp
+* 用户登录：localhost:3000/signIn
+* 用户个人中心：localhost:3000/user/center?userId=id
 
 后台管理：
 
-* 当前电影列表：http://localhost:3000/admin/movie/list
-* 电影录入：http://localhost:3000/admin/movie/add
-* 电影数据修改：http://localhost:3000/admin/movie/update/:id
-* 电影分类列表：http://localhost:3000/admin/category/list
-* 电影分类修改：http://localhost:3000/admin/category/update/:id
-* 电影分类新增：http://localhost:3000/admin/category/new
-* 用户列表：http://localhost:3000/admin/user/list
+* 当前电影列表：localhost:3000/admin/movie/list
+* 电影录入：localhost:3000/admin/movie/add
+* 电影数据修改：localhost:3000/admin/movie/update/:id
+* 电影分类列表：localhost:3000/admin/category/list
+* 电影分类修改：localhost:3000/admin/category/update/:id
+* 电影分类新增：localhost:3000/admin/category/new
+* 用户列表：localhost:3000/admin/user/list
 ### 七、项目结构
 ```bash
 ├── app.js              项目入口文件
