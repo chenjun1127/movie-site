@@ -106,7 +106,7 @@ gulp
 ├── .gitignore          
 ├── .jshintrc           
 ├── bower.json  
-├── gulpfile.js       gulp文件
+├── gulpfile.js         gulp文件
 └── package.json
 ```
 ### 八、项目总结
