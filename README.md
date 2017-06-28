@@ -41,11 +41,11 @@ bower install
 ```bash
 gulp
 ```
-启动项目，稍等片刻后，gulp会自动打开chrome浏览器，就可以看到[http://localhost:3000/]主页，项目就运行成功了。注意：若端口已占用可在app.js文件中将gulp的代理端口3000换成未占用的端口！
+启动项目，稍等片刻后，gulp会自动打开chrome浏览器，就可以看到 http://localhost:3000/ 主页，项目就运行成功了。注意：若端口已占用可在app.js文件中将gulp的代理端口3000换成未占用的端口！
 ### 六、项目页面
 当使用管理员账号（chenjun,123456）登录时，在网站右上角会出现下拉菜单，通过点击菜单可以进入各个页面，如果自己注册的账号，默认为普通用户（role为0），普通用户有权限限制，是无法进入到电影的列表、录入、分类、用户等管理页面的！当然，可自行修改数据库里的当前账号的role值，当role大于10的时候，就有管理员权限了！基本的界面路由如下：
 基本页面：
-* 首页：[http://localhost:3000/]
+* 首页：http://localhost:3000/
 * 详情页：http://localhost:3000/movie/:id
 * 当前电影分页类别页：http://localhost:3000/movie/category/result?cat=id&pageSize=1
 
