@@ -25,14 +25,13 @@
 ### 三、运行环境及Node版本:
 作为windows平台的忠实粉丝（≥▽≤/），当前平台下node v6.9.2 ，运行正常！
 ### 四、安装
-1、MongoDB 安装[mongodb](https://www.mongodb.org/downloads#production)完成相关配置；
-
-2、克隆项目，进入项目目录；
+* MongoDB 安装[mongodb](https://www.mongodb.org/downloads#production)完成相关配置；
+* 克隆项目，进入项目目录；
 ```javascript
 git clone git@github.com:chenjun1127/Movie-Site.git
 cd movie-site
 ```
-3、安装依赖
+* 安装依赖
 ```javascript
 npm install
 bower install 
