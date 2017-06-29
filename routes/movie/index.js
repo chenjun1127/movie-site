@@ -66,4 +66,36 @@ router.get('/movie/category/result', (req, res) => {
 	})
 })
 
+// search
+router.post('/search',(req,res)=>{
+    // var pageSize = req.query.pageSize;
+    var q = req.body.query;
+    var reg = new RegExp(q+'.*','i');
+    var totalSize = 0;
+    Movie.find({title:reg},(err,movies)=>{
+        if(movies.length<=0){
+            Category.find({name:reg}).populate("movies","poster title").exec((err,categories)=>{
+                categories.forEach((ele,index)=>{
+                    // console.log(ele.movies.length)
+                    totalSize += ele.movies.length;
+                })
+                res.render('search',{
+                    title: '搜索页',
+                    categories:categories,
+                    number:totalSize,
+                    keywords:q,       
+                })
+            })
+        }else{
+            res.render('search',{
+                title: '搜索页',
+                movies:movies,
+                number:movies.length,
+                keywords:q
+            }) 
+        }
+    })
+    
+})
+
 module.exports = router;

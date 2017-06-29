@@ -1,0 +1,59 @@
+extends ../layout
+block content
+    .container
+        .row
+            .col-md-12
+                .panel.panel-default
+                    .panel-heading
+                        h3 
+                            span 搜索
+                            span(style="color:red;")=keywords 
+                            span 的结果
+                            span 共#{number}条
+                    .panel-body
+                        if movies
+                            .row
+                                each item,index in movies 
+                                    .col-md-3
+                                        .thumbnail
+                                            a(href="/movie/"+item._id)
+                                                img(src=item.poster,alt="#{item.title}",style="height:350px;")
+                                            .caption
+                                                h5=item.title
+                                                a.btn.btn-primary(href="movie/#{item._id}",role="button") 观看预告片
+                        if categories
+                            .row
+                                each cat in categories
+                                    //- h4(style="margin:0 15px 15px 15px;border-bottom:1px solid #d9d9d9;padding-bottom:13px;")=cat.name
+                                    each item in cat.movies
+                                        .col-md-3
+                                            .thumbnail
+                                                a(href="/movie/"+item._id)
+                                                    img(src=item.poster,alt="#{item.title}",style="height:350px;")
+                                                .caption
+                                                    h5=item.title
+                                                    a.btn.btn-primary(href="movie/#{item._id}",role="button") 观看预告片
+                                //- if number > 8 
+                                //-         nav(style="text-align: center")
+                                //-             ul.pagination.pagination-lg(style="margin:10px 0")
+                                //-                 if pageSize-1 <= 0
+                                //-                     li.previous.disabled
+                                //-                         a(href='javascript:;') «
+                                //-                 else
+                                //-                     li.previous
+                                //-                         a(href='/search?pageSize=#{pageSize-1}') «
+                                //-                 -for(var i = 0; i < page; i++){
+                                //-                     -if( pageSize == (i+1)){
+                                //-                         li.active
+                                //-                             span #{pageSize}
+                                //-                     -}else{
+                                //-                         li
+                                //-                             a(href='/search?pageSize=#{i+1}') #{i+1}
+                                //-                     -}
+                                //-                 -}
+                                //-                 if pageSize+1 > page   
+                                //-                     li.next.disabled
+                                //-                         a(href='javascript:;') »
+                                //-                 else
+                                //-                     li.next
+                                //-                         a(href='/search?pageSize=#{pageSize+1}') »
